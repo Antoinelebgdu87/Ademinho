@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Navigation from "@/components/Navigation";
 import ScrollingBanner from "@/components/ScrollingBanner";
 import OrderForm from "@/components/OrderForm";
@@ -59,6 +64,9 @@ const Index = () => {
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                  <DialogTitle className="sr-only">
+                    Commander une vidéo
+                  </DialogTitle>
                   <OrderForm onClose={() => setIsOrderFormOpen(false)} />
                 </DialogContent>
               </Dialog>
@@ -155,6 +163,7 @@ const Index = () => {
               </Button>
             </DialogTrigger>
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+              <DialogTitle className="sr-only">Commander une vidéo</DialogTitle>
               <OrderForm onClose={() => setIsOrderFormOpen(false)} />
             </DialogContent>
           </Dialog>
