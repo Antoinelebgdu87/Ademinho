@@ -29,7 +29,6 @@ import {
   getCurrentVersion,
   type SiteContent,
 } from "@/lib/storage";
-import VisualEditor from "@/components/VisualEditor";
 
 const Admin = () => {
   const { toast } = useToast();
@@ -42,7 +41,6 @@ const Admin = () => {
 
   const [siteContent, setSiteContent] = useState<SiteContent>(loadContent());
   const [currentVersion, setCurrentVersion] = useState<string | null>(null);
-  const [isVisualEditorActive, setIsVisualEditorActive] = useState(false);
 
   useEffect(() => {
     setIsLoggedIn(isAdminLoggedIn());
@@ -272,15 +270,6 @@ const Admin = () => {
               )}
             </div>
             <div className="flex items-center space-x-4">
-              <Button
-                onClick={() => setIsVisualEditorActive(!isVisualEditorActive)}
-                variant={isVisualEditorActive ? "default" : "outline"}
-                className="font-display font-semibold hover-grow"
-              >
-                {isVisualEditorActive
-                  ? "🎨 ÉDITEUR ACTIF"
-                  : "🎨 ÉDITEUR VISUEL"}
-              </Button>
               <Badge
                 variant="outline"
                 className="text-green-600 border-green-600 animate-pulse-glow"
@@ -839,12 +828,6 @@ const Admin = () => {
           </TabsContent>
         </Tabs>
       </div>
-
-      {/* Visual Editor Component */}
-      <VisualEditor
-        isActive={isVisualEditorActive}
-        onToggle={() => setIsVisualEditorActive(!isVisualEditorActive)}
-      />
     </div>
   );
 };
