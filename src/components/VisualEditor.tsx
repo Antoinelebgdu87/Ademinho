@@ -169,7 +169,7 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
     });
 
     toast({
-      title: "🧹 Emojis supprimés !",
+      title: "Emojis supprimés !",
       description: `${count} emojis ont été retirés du site`,
     });
   };
@@ -219,19 +219,19 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
           outline: 1px dashed transparent !important;
           transition: outline 0.2s ease !important;
         }
-        
+
         .visual-editing-mode *:hover {
           outline: 2px dashed #ED5C3B !important;
           outline-offset: 2px !important;
           cursor: pointer !important;
         }
-        
+
         .visual-editor-highlight {
           outline: 3px solid #ED5C3B !important;
           outline-offset: 4px !important;
           background: rgba(237, 92, 59, 0.1) !important;
         }
-        
+
         .visual-editor-panel {
           pointer-events: auto !important;
         }
@@ -243,7 +243,7 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
           <CardContent className="p-4 space-y-4">
             <div className="flex items-center justify-between">
               <Badge variant="default" className="font-bold">
-                🎨 MODE ÉDITEUR VISUEL
+                MODE ÉDITEUR VISUEL
               </Badge>
               <Button
                 size="sm"
@@ -251,7 +251,7 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
                 onClick={onToggle}
                 className="font-semibold"
               >
-                ❌ FERMER
+                FERMER
               </Button>
             </div>
 
@@ -279,7 +279,7 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
                     onClick={updateElementText}
                     className="flex-1 text-xs"
                   >
-                    ✅ APPLIQUER
+                    APPLIQUER
                   </Button>
                   <Button
                     size="sm"
@@ -287,7 +287,7 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
                     onClick={removeElement}
                     className="text-xs"
                   >
-                    🗑️ SUPPRIMER
+                    SUPPRIMER
                   </Button>
                 </div>
               </div>
@@ -303,7 +303,7 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
                   onClick={() => addElement("heading")}
                   className="text-xs"
                 >
-                  ➕ TITRE
+                  AJOUTER TITRE
                 </Button>
                 <Button
                   size="sm"
@@ -311,7 +311,7 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
                   onClick={() => addElement("text")}
                   className="text-xs"
                 >
-                  ➕ TEXTE
+                  AJOUTER TEXTE
                 </Button>
               </div>
 
@@ -321,7 +321,7 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
                 onClick={removeAllEmojis}
                 className="w-full text-xs"
               >
-                🧹 SUPPRIMER TOUS LES EMOJIS
+                SUPPRIMER TOUS LES EMOJIS
               </Button>
 
               <Button
@@ -329,13 +329,13 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
                 onClick={() => {
                   saveContent(siteContent);
                   toast({
-                    title: "💾 Sauvegardé !",
+                    title: "Sauvegardé !",
                     description: "Toutes les modifications sont permanentes",
                   });
                 }}
                 className="w-full text-xs font-bold"
               >
-                💾 SAUVEGARDER TOUT
+                SAUVEGARDER TOUT
               </Button>
             </div>
           </CardContent>
