@@ -50,8 +50,18 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
 
     const target = e.target as HTMLElement;
 
-    // Don't edit the editor itself
-    if (target.closest(".visual-editor-panel")) return;
+    // Don't edit the editor itself or any editor-related elements
+    if (
+      target.closest(".visual-editor-panel") ||
+      target.closest("[data-editor-protected]") ||
+      target.closest(".fixed") ||
+      target.closest("[role='dialog']") ||
+      target.closest(".z-50") ||
+      target.closest(".z-40") ||
+      target.closest("[data-radix-popper-content-wrapper]") ||
+      target.hasAttribute("data-editor-protected")
+    )
+      return;
 
     // Find editable elements
     const editableSelectors = [
@@ -230,6 +240,25 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
           background: rgba(237, 92, 59, 0.05) !important;
         }
 
+        /* Protection des éléments de l'éditeur */
+        .visual-editing-mode [data-editor-protected],
+        .visual-editing-mode [data-editor-protected] *,
+        .visual-editing-mode .visual-editor-panel,
+        .visual-editing-mode .visual-editor-panel *,
+        .visual-editing-mode .fixed,
+        .visual-editing-mode .fixed *,
+        .visual-editing-mode [role="dialog"],
+        .visual-editing-mode [role="dialog"] *,
+        .visual-editing-mode .z-50,
+        .visual-editing-mode .z-50 *,
+        .visual-editing-mode .z-40,
+        .visual-editing-mode .z-40 * {
+          outline: none !important;
+          background: transparent !important;
+          cursor: default !important;
+          pointer-events: auto !important;
+        }
+
         .visual-editor-highlight {
           outline: 3px solid #ED5C3B !important;
           outline-offset: 4px !important;
@@ -258,6 +287,7 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
           font-size: 14px;
           z-index: 9998;
           animation: pulse 2s infinite;
+          pointer-events: none;
         }
 
         @keyframes pulse {
@@ -267,7 +297,10 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
       `}</style>
 
       {/* Floating Editor Panel */}
-      <div className="visual-editor-panel fixed top-4 right-4 z-50 w-80">
+      <div
+        className="visual-editor-panel fixed top-4 right-4 z-50 w-80"
+        data-editor-protected="true"
+      >
         <Card className="bg-background/95 backdrop-blur-sm border-2 border-primary shadow-2xl">
           <CardContent className="p-4 space-y-4">
             <div className="flex items-center justify-between">

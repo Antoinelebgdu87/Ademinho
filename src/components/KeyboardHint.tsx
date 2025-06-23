@@ -19,7 +19,10 @@ const KeyboardHint = () => {
   return (
     <>
       {showHint && (
-        <div className="fixed bottom-6 left-6 z-40 animate-fade-in-up">
+        <div
+          className="fixed bottom-6 left-6 z-40 animate-fade-in-up"
+          data-editor-protected="true"
+        >
           <div className="bg-muted border border-border rounded-lg p-3 shadow-lg max-w-xs">
             <div className="text-sm font-medium mb-1">
               Mode éditeur disponible

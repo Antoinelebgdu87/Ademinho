@@ -49,7 +49,10 @@ const QuickLogin = ({ isOpen, onClose, onSuccess }: QuickLoginProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] backdrop-blur-sm">
+    <div
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] backdrop-blur-sm"
+      data-editor-protected="true"
+    >
       <Card className="w-full max-w-md mx-4 animate-scale-in">
         <CardHeader className="text-center">
           <CardTitle className="font-display text-2xl font-bold tracking-tight">
@@ -78,7 +81,7 @@ const QuickLogin = ({ isOpen, onClose, onSuccess }: QuickLoginProps) => {
                   }))
                 }
                 required
-                placeholder="Admin12"
+                placeholder="Nom d'utilisateur"
                 className="font-mono"
               />
             </div>
@@ -100,7 +103,7 @@ const QuickLogin = ({ isOpen, onClose, onSuccess }: QuickLoginProps) => {
                   }))
                 }
                 required
-                placeholder="Acces4455511555"
+                placeholder="Mot de passe"
                 className="font-mono"
               />
             </div>
