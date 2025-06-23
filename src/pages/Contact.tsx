@@ -100,10 +100,7 @@ const Contact = () => {
             <h1 className="font-display font-black text-4xl sm:text-6xl tracking-tight mb-6 animate-fade-in-up">
               RESTONS EN
               <br />
-              <span className="text-primary animate-text-shimmer">
-                CONTACT
-              </span>{" "}
-              📱
+              <span className="text-primary">CONTACT</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up stagger-2">
               Prêt à transformer vos idées en vidéos exceptionnelles qui

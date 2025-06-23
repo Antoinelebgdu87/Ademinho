@@ -103,10 +103,7 @@ const Works = () => {
             <h1 className="font-display font-black text-4xl sm:text-6xl tracking-tight mb-6 animate-fade-in-up">
               MES
               <br />
-              <span className="text-primary animate-text-shimmer">
-                CRÉATIONS ÉPIQUES
-              </span>{" "}
-              🎬
+              <span className="text-primary">CRÉATIONS ÉPIQUES</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up stagger-2 leading-relaxed">
               Découvrez une sélection de mes meilleurs projets de montage vidéo
@@ -226,10 +223,7 @@ const Works = () => {
             <h2 className="font-display font-black text-3xl sm:text-5xl mb-8 animate-fade-in-up">
               TECHNOLOGIES
               <br />
-              <span className="text-primary animate-text-shimmer">
-                MAÎTRISÉES
-              </span>{" "}
-              💻
+              <span className="text-primary">MAÎTRISÉES</span>
             </h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

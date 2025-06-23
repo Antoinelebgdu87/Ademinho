@@ -152,10 +152,7 @@ const About = () => {
             <h1 className="font-display font-black text-4xl sm:text-6xl tracking-tight mb-6 animate-fade-in-up">
               À PROPOS
               <br />
-              <span className="text-primary animate-text-shimmer">
-                D'ADEMINHO
-              </span>{" "}
-              🇧🇷
+              <span className="text-primary">D'ADEMINHO</span> 🇧🇷
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up stagger-2 leading-relaxed">
               {siteContent.aboutText}
@@ -191,10 +188,7 @@ const About = () => {
             <h2 className="font-display font-black text-3xl sm:text-5xl text-center mb-12 animate-fade-in-up">
               MES SUPER-POUVOIRS
               <br />
-              <span className="text-primary animate-text-shimmer">
-                CRÉATIFS
-              </span>{" "}
-              💪
+              <span className="text-primary">CRÉATIFS</span>
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -243,10 +237,7 @@ const About = () => {
             <h2 className="font-display font-black text-3xl sm:text-5xl text-center mb-12 animate-fade-in-up">
               MON PARCOURS
               <br />
-              <span className="text-primary animate-text-shimmer">
-                LÉGENDAIRE
-              </span>{" "}
-              🎯
+              <span className="text-primary">LÉGENDAIRE</span>
             </h2>
 
             <div className="relative">
