@@ -219,10 +219,9 @@ const About = () => {
                     </p>
                     <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
                       <div
-                        className={`h-full ${skill.color} rounded-full transition-all duration-1000 ease-out animate-pulse-glow`}
+                        className={`h-full ${skill.color} rounded-full transition-all duration-1000 ease-out`}
                         style={{
                           width: `${skill.level}%`,
-                          animation: `skill-load-${index} 2s ease-out forwards`,
                         }}
                       ></div>
                     </div>
@@ -352,19 +351,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      <style jsx>{`
-        ${skills
-          .map(
-            (_, index) => `
-          @keyframes skill-load-${index} {
-            from { width: 0%; }
-            to { width: ${skills[index].level}%; }
-          }
-        `,
-          )
-          .join("")}
-      `}</style>
     </div>
   );
 };
