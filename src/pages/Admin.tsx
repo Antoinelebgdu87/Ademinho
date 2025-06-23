@@ -32,7 +32,7 @@ import {
 const Admin = () => {
   const { toast } = useToast();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -84,7 +84,7 @@ const Admin = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+    setIsLoginLoading(true);
 
     setTimeout(() => {
       if (authenticateAdmin(credentials.username, credentials.password)) {
@@ -101,7 +101,7 @@ const Admin = () => {
           variant: "destructive",
         });
       }
-      setIsLoading(false);
+      setIsLoginLoading(false);
     }, 1000);
   };
 
@@ -266,10 +266,10 @@ const Admin = () => {
               </div>
               <Button
                 type="submit"
-                disabled={isLoading}
+                disabled={isLoginLoading}
                 className="w-full font-display font-bold tracking-wide text-lg py-6 animate-pulse-glow hover-grow"
               >
-                {isLoading ? "🔄 CONNEXION..." : "🚀 ACCÉDER AU CONTRÔLE"}
+                {isLoginLoading ? "🔄 CONNEXION..." : "🚀 ACCÉDER AU CONTRÔLE"}
               </Button>
             </form>
           </CardContent>
@@ -483,10 +483,10 @@ const Admin = () => {
 
                 <Button
                   onClick={handleSaveContent}
-                  disabled={isLoading}
+                  disabled={isSaving}
                   className="w-full font-display font-bold tracking-wide text-lg py-6 animate-pulse-glow hover-grow"
                 >
-                  {isLoading
+                  {isSaving
                     ? "🔄 SAUVEGARDE EN COURS..."
                     : "💾 SAUVEGARDER ET PUBLIER EN TEMPS RÉEL"}
                 </Button>
@@ -580,12 +580,10 @@ const Admin = () => {
 
                 <Button
                   onClick={handleSaveContent}
-                  disabled={isLoading}
+                  disabled={isSaving}
                   className="w-full mt-6 font-display font-bold tracking-wide animate-pulse-glow"
                 >
-                  {isLoading
-                    ? "🔄 SAUVEGARDE..."
-                    : "💾 SAUVEGARDER LES PROJETS"}
+                  {isSaving ? "🔄 SAUVEGARDE..." : "💾 SAUVEGARDER LES PROJETS"}
                 </Button>
               </CardContent>
             </Card>
@@ -743,10 +741,10 @@ const Admin = () => {
 
                 <Button
                   onClick={handleSaveContent}
-                  disabled={isLoading}
+                  disabled={isSaving}
                   className="w-full font-display font-bold tracking-wide text-lg py-6 animate-pulse-glow hover-grow"
                 >
-                  {isLoading
+                  {isSaving
                     ? "🔄 SAUVEGARDE..."
                     : "💾 SAUVEGARDER LES PARAMÈTRES"}
                 </Button>
