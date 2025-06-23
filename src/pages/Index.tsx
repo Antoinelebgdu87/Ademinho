@@ -109,24 +109,24 @@ const Index = () => {
 
             {/* Statistiques animées */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 animate-fade-in-up stagger-6">
-              <div className="text-center hover-bounce">
-                <div className="text-4xl lg:text-6xl font-black text-primary mb-2 animate-bounce-slow">
+              <div className="text-center hover-grow transition-transform duration-300">
+                <div className="text-4xl lg:text-6xl font-black text-primary mb-2">
                   50M+
                 </div>
                 <p className="font-display font-semibold text-muted-foreground">
                   VUES GÉNÉRÉES
                 </p>
               </div>
-              <div className="text-center hover-bounce">
-                <div className="text-4xl lg:text-6xl font-black text-primary mb-2 animate-bounce-slow animation-delay-500">
+              <div className="text-center hover-grow transition-transform duration-300">
+                <div className="text-4xl lg:text-6xl font-black text-primary mb-2">
                   200+
                 </div>
                 <p className="font-display font-semibold text-muted-foreground">
                   PROJETS RÉALISÉS
                 </p>
               </div>
-              <div className="text-center hover-bounce">
-                <div className="text-4xl lg:text-6xl font-black text-primary mb-2 animate-bounce-slow animation-delay-1000">
+              <div className="text-center hover-grow transition-transform duration-300">
+                <div className="text-4xl lg:text-6xl font-black text-primary mb-2">
                   98%
                 </div>
                 <p className="font-display font-semibold text-muted-foreground">
@@ -138,23 +138,23 @@ const Index = () => {
         </div>
 
         {/* Éléments décoratifs animés */}
-        <div className="absolute top-1/4 left-10 text-6xl opacity-30 animate-float hover-grow cursor-pointer">
+        <div className="absolute top-1/4 left-10 text-6xl opacity-30 animate-float cursor-pointer transition-transform duration-300 hover:scale-110">
           🎬
         </div>
         <div
-          className="absolute top-1/3 right-16 text-4xl opacity-30 animate-wiggle hover-grow cursor-pointer"
+          className="absolute top-1/3 right-16 text-4xl opacity-30 animate-wiggle cursor-pointer transition-transform duration-300 hover:scale-110"
           style={{ animationDelay: "0.5s" }}
         >
           🎥
         </div>
         <div
-          className="absolute bottom-1/4 left-1/4 text-5xl opacity-30 animate-rotate-slow hover-grow cursor-pointer"
+          className="absolute bottom-1/4 left-1/4 text-5xl opacity-30 animate-rotate-slow cursor-pointer transition-transform duration-300 hover:scale-110"
           style={{ animationDelay: "1s" }}
         >
           ✨
         </div>
         <div
-          className="absolute top-1/2 right-1/3 text-3xl opacity-30 animate-float hover-grow cursor-pointer"
+          className="absolute top-1/2 right-1/3 text-3xl opacity-30 animate-float cursor-pointer transition-transform duration-300 hover:scale-110"
           style={{ animationDelay: "1.5s" }}
         >
           🚀
