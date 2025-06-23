@@ -147,7 +147,7 @@ const Contact = () => {
           {/* Réseaux sociaux supplémentaires */}
           <div className="mb-16">
             <h2 className="font-display font-bold text-3xl text-center mb-8 animate-fade-in-up">
-              🌟 SUIVEZ-MOI PARTOUT
+              SUIVEZ-MOI PARTOUT
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {socialPlatforms.map((platform, index) => (
@@ -180,12 +180,11 @@ const Contact = () => {
 
           {/* Temps de réponse avec animations */}
           <div className="bg-gradient-to-r from-muted/50 to-primary/10 rounded-xl p-8 text-center mb-16 animate-fade-in-up stagger-7 hover-glow">
-            <h2 className="font-display font-bold text-3xl tracking-wide mb-6 text-primary animate-text-shimmer">
-              ⚡ TEMPS DE RÉPONSE ULTRA-RAPIDE
+            <h2 className="font-display font-bold text-3xl tracking-wide mb-6 text-primary">
+              TEMPS DE RÉPONSE ULTRA-RAPIDE
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="animate-bounce-slow">
-                <div className="text-4xl mb-3 animate-pulse-glow">📧</div>
                 <h3 className="font-display font-semibold text-xl mb-2 text-primary">
                   EMAIL
                 </h3>
@@ -194,16 +193,14 @@ const Contact = () => {
                 </p>
               </div>
               <div className="animate-wiggle">
-                <div className="text-4xl mb-3 animate-pulse-glow">💬</div>
                 <h3 className="font-display font-semibold text-xl mb-2 text-primary">
                   DISCORD
                 </h3>
                 <p className="text-muted-foreground font-bold">
-                  Quasi instantané ⚡
+                  Quasi instantané
                 </p>
               </div>
               <div className="animate-float">
-                <div className="text-4xl mb-3 animate-pulse-glow">📱</div>
                 <h3 className="font-display font-semibold text-xl mb-2 text-primary">
                   RÉSEAUX SOCIAUX
                 </h3>
@@ -223,7 +220,6 @@ const Contact = () => {
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-center justify-center space-x-3">
-                    <span className="text-3xl animate-wiggle">🇧🇷</span>
                     <div>
                       <p className="font-semibold">Basé au Brésil</p>
                       <p className="text-muted-foreground text-sm">(GMT-3)</p>
@@ -254,13 +250,13 @@ const Contact = () => {
           <div className="text-center mt-16 animate-fade-in-up stagger-9">
             <Card className="bg-gradient-to-r from-primary/10 to-purple-500/10 border-2 border-primary/20 hover-glow">
               <CardContent className="p-12">
-                <h2 className="font-display font-black text-3xl sm:text-4xl mb-6 text-primary animate-text-shimmer">
-                  🚀 PRÊT POUR L'AVENTURE ?
+                <h2 className="font-display font-black text-3xl sm:text-4xl mb-6 text-primary">
+                  PRÊT POUR L'AVENTURE ?
                 </h2>
                 <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                   Ne laissez pas vos idées géniales dormir ! Contactez-moi
                   maintenant et créons ensemble du contenu qui marquera les
-                  esprits ! 🔥
+                  esprits !
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
@@ -269,7 +265,7 @@ const Contact = () => {
                     className="font-display font-bold text-lg tracking-wide px-8 py-6 rounded-full animate-pulse-glow hover-grow"
                   >
                     <a href={`mailto:${siteContent.contact.email}`}>
-                      📧 ENVOYER UN EMAIL
+                      ENVOYER UN EMAIL
                     </a>
                   </Button>
                   <Button
@@ -278,7 +274,7 @@ const Contact = () => {
                     size="lg"
                     className="font-display font-bold text-lg tracking-wide px-8 py-6 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover-grow"
                   >
-                    <a href="/#order">🎬 COMMANDER UNE VIDÉO</a>
+                    <a href="/#order">COMMANDER UNE VIDÉO</a>
                   </Button>
                 </div>
               </CardContent>

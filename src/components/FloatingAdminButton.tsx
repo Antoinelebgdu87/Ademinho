@@ -26,7 +26,7 @@ const FloatingAdminButton = ({
         } ${isEditorActive ? "animate-pulse bg-green-600 hover:bg-green-700" : ""}`}
         title="Admin Tools (Ctrl+E pour éditeur)"
       >
-        {isEditorActive ? "✅" : "🔧"}
+        {isEditorActive ? "ON" : "ADMIN"}
       </Button>
 
       {/* Admin tools menu */}
@@ -38,7 +38,7 @@ const FloatingAdminButton = ({
             className="whitespace-nowrap font-semibold shadow-lg"
             size="sm"
           >
-            {isEditorActive ? "🎨 ÉDITEUR ACTIF" : "🎨 ÉDITEUR VISUEL"}
+            {isEditorActive ? "ÉDITEUR ACTIF" : "ÉDITEUR VISUEL"}
           </Button>
 
           <Button
@@ -47,7 +47,7 @@ const FloatingAdminButton = ({
             className="whitespace-nowrap font-semibold shadow-lg"
             size="sm"
           >
-            <a href="/admin">⚙️ ADMIN PANEL</a>
+            <a href="/admin">ADMIN PANEL</a>
           </Button>
 
           <Button
@@ -77,7 +77,7 @@ const FloatingAdminButton = ({
             className="whitespace-nowrap font-semibold shadow-lg text-red-600 border-red-600 hover:bg-red-50"
             size="sm"
           >
-            🧹 SUPPRIMER EMOJIS
+            SUPPRIMER EMOJIS
           </Button>
         </div>
       )}
