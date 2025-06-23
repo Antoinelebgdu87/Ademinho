@@ -5,7 +5,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { loadContent, saveContent, type SiteContent } from "@/lib/storage";
+import {
+  loadContentFromServer,
+  saveContentToServer,
+  subscribeToServerContentChanges,
+  type SiteContent,
+} from "@/lib/realStorage";
 
 interface VisualEditorProps {
   isActive: boolean;
@@ -14,9 +19,43 @@ interface VisualEditorProps {
 
 const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
   const { toast } = useToast();
-  const [siteContent, setSiteContent] = useState<SiteContent>(loadContent());
+  const [siteContent, setSiteContent] = useState<SiteContent | null>(null);
   const [selectedElement, setSelectedElement] = useState<string | null>(null);
   const [editingText, setEditingText] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    // Load content from server on mount
+    const loadInitialContent = async () => {
+      try {
+        const content = await loadContentFromServer();
+        setSiteContent(content);
+      } catch (error) {
+        console.error("Error loading content:", error);
+        toast({
+          title: "Erreur de chargement",
+          description: "Impossible de charger le contenu depuis le serveur",
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadInitialContent();
+
+    // Subscribe to real-time changes
+    const unsubscribe = subscribeToServerContentChanges((newContent) => {
+      setSiteContent(newContent);
+      toast({
+        title: "Contenu synchronisé",
+        description: "Le site a été mis à jour en temps réel",
+      });
+    });
+
+    return unsubscribe;
+  }, [toast]);
 
   useEffect(() => {
     if (isActive) {
@@ -110,25 +149,44 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
     element.classList.add("visual-editor-highlight");
   };
 
-  const updateElementText = () => {
+  const updateElementText = async () => {
     const highlighted = document.querySelector(".visual-editor-highlight");
-    if (highlighted && editingText.trim()) {
+    if (highlighted && editingText.trim() && siteContent) {
       highlighted.textContent = editingText;
 
       // Update content based on element type
-      updateContentInStorage(highlighted as HTMLElement, editingText);
+      const updatedContent = updateContentInStorage(
+        highlighted as HTMLElement,
+        editingText,
+      );
 
-      // Auto-save immediately
-      saveContent(siteContent);
+      // Auto-save to server immediately
+      setIsSaving(true);
+      const success = await saveContentToServer(updatedContent);
 
-      toast({
-        title: "Élément modifié et sauvegardé !",
-        description: "Changement visible par tous instantanément",
-      });
+      if (success) {
+        setSiteContent(updatedContent);
+        toast({
+          title: "Élément modifié et sauvegardé !",
+          description: "Changement visible par tous instantanément",
+        });
+      } else {
+        toast({
+          title: "Erreur de sauvegarde",
+          description: "Modification locale seulement",
+          variant: "destructive",
+        });
+      }
+      setIsSaving(false);
     }
   };
 
-  const updateContentInStorage = (element: HTMLElement, newText: string) => {
+  const updateContentInStorage = (
+    element: HTMLElement,
+    newText: string,
+  ): SiteContent => {
+    if (!siteContent) return siteContent as SiteContent;
+
     const newContent = { ...siteContent };
 
     // Detect what type of content this is based on context
@@ -144,8 +202,7 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
       newContent.aboutText = newText;
     }
 
-    setSiteContent(newContent);
-    saveContent(newContent);
+    return newContent;
   };
 
   const removeElement = () => {
@@ -223,6 +280,21 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
   };
 
   if (!isActive) return null;
+
+  if (isLoading) {
+    return (
+      <div className="fixed top-4 right-4 z-50" data-editor-protected="true">
+        <div className="bg-background/95 backdrop-blur-sm border-2 border-primary shadow-2xl rounded-lg p-4">
+          <div className="flex items-center gap-2">
+            <div className="animate-spin h-4 w-4 border-2 border-primary border-t-transparent rounded-full"></div>
+            <span className="text-sm font-semibold">
+              Chargement de l'éditeur...
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -393,16 +465,30 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
 
               <Button
                 size="sm"
-                onClick={() => {
-                  saveContent(siteContent);
-                  toast({
-                    title: "Sauvegardé !",
-                    description: "Toutes les modifications sont permanentes",
-                  });
+                onClick={async () => {
+                  if (!siteContent) return;
+                  setIsSaving(true);
+                  const success = await saveContentToServer(siteContent);
+                  setIsSaving(false);
+
+                  if (success) {
+                    toast({
+                      title: "Sauvegardé sur le serveur !",
+                      description:
+                        "Toutes les modifications sont permanentes pour tous",
+                    });
+                  } else {
+                    toast({
+                      title: "Erreur de sauvegarde",
+                      description: "Impossible de sauvegarder sur le serveur",
+                      variant: "destructive",
+                    });
+                  }
                 }}
+                disabled={isSaving || !siteContent}
                 className="w-full text-xs font-bold"
               >
-                SAUVEGARDER TOUT
+                {isSaving ? "SAUVEGARDE..." : "SAUVEGARDER SUR SERVEUR"}
               </Button>
             </div>
           </CardContent>

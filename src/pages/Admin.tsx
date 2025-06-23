@@ -21,14 +21,13 @@ import {
   logoutAdmin,
 } from "@/lib/auth";
 import {
-  loadContent,
-  saveContent,
-  subscribeToContentChanges,
-  exportContent,
-  importContent,
-  getCurrentVersion,
+  loadContentFromServer,
+  saveContentToServer,
+  subscribeToServerContentChanges,
+  getSyncStatus,
+  forceSyncContent,
   type SiteContent,
-} from "@/lib/storage";
+} from "@/lib/realStorage";
 
 const Admin = () => {
   const { toast } = useToast();
@@ -39,18 +38,43 @@ const Admin = () => {
     password: "",
   });
 
-  const [siteContent, setSiteContent] = useState<SiteContent>(loadContent());
+  const [siteContent, setSiteContent] = useState<SiteContent | null>(null);
   const [currentVersion, setCurrentVersion] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [syncStatus, setSyncStatus] = useState(getSyncStatus());
 
   useEffect(() => {
     setIsLoggedIn(isAdminLoggedIn());
-    setCurrentVersion(getCurrentVersion());
+
+    // Load content from server
+    const loadInitialContent = async () => {
+      try {
+        const content = await loadContentFromServer();
+        setSiteContent(content);
+        setCurrentVersion(content.version);
+        setSyncStatus(getSyncStatus());
+      } catch (error) {
+        console.error("Error loading content:", error);
+        toast({
+          title: "Erreur de chargement",
+          description: "Impossible de charger le contenu depuis le serveur",
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadInitialContent();
 
     // Écoute les changements de contenu en temps réel
-    const unsubscribe = subscribeToContentChanges((newContent) => {
+    const unsubscribe = subscribeToServerContentChanges((newContent) => {
       setSiteContent(newContent);
+      setCurrentVersion(newContent.version);
+      setSyncStatus(getSyncStatus());
       toast({
-        title: "🔄 Contenu synchronisé !",
+        title: "Contenu synchronisé !",
         description: "Les modifications ont été appliquées en temps réel",
       });
     });
@@ -91,27 +115,31 @@ const Admin = () => {
   };
 
   const handleSaveContent = async () => {
-    setIsLoading(true);
+    if (!siteContent) return;
+
+    setIsSaving(true);
     try {
-      // Simulation d'une sauvegarde réseau
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      const success = await saveContentToServer(siteContent);
 
-      saveContent(siteContent);
-      setCurrentVersion(getCurrentVersion());
-
-      toast({
-        title: "🎉 Modifications sauvegardées !",
-        description:
-          "Les changements sont maintenant visibles par tous les visiteurs en temps réel !",
-      });
+      if (success) {
+        setCurrentVersion(siteContent.version);
+        setSyncStatus(getSyncStatus());
+        toast({
+          title: "Modifications sauvegardées !",
+          description:
+            "Les changements sont maintenant visibles par tous les visiteurs en temps réel !",
+        });
+      } else {
+        throw new Error("Échec de la sauvegarde sur le serveur");
+      }
     } catch (error) {
       toast({
-        title: "❌ Erreur de sauvegarde",
-        description: "Une erreur s'est produite lors de la sauvegarde",
+        title: "Erreur de sauvegarde",
+        description: "Une erreur s'est produite lors de la sauvegarde serveur",
         variant: "destructive",
       });
     } finally {
-      setIsLoading(false);
+      setIsSaving(false);
     }
   };
 
