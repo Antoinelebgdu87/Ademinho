@@ -67,25 +67,21 @@ const About = () => {
 
   const achievements = [
     {
-      icon: "🏆",
       title: "50M+ VUES GÉNÉRÉES",
       description: "Sur toutes les plateformes confondues",
       color: "text-yellow-500",
     },
     {
-      icon: "🎯",
       title: "200+ PROJETS RÉALISÉS",
       description: "Clients satisfaits dans le monde entier",
       color: "text-blue-500",
     },
     {
-      icon: "⚡",
       title: "24H TEMPS MOYEN",
       description: "De réponse aux demandes clients",
       color: "text-green-500",
     },
     {
-      icon: "🔥",
       title: "98% TAUX DE SATISFACTION",
       description: "Clients qui reviennent pour plus",
       color: "text-red-500",
@@ -98,27 +94,23 @@ const About = () => {
       title: "PREMIERS PAS",
       description:
         "Découverte de la passion pour le montage vidéo et After Effects",
-      icon: "🌱",
     },
     {
       year: "2022",
       title: "EXPERTISE TECHNIQUE",
       description:
         "Maîtrise avancée des outils et techniques de post-production",
-      icon: "🛠️",
     },
     {
       year: "2023",
       title: "SUCCÈS VIRAL",
       description: "Premiers contenus viraux atteignant des millions de vues",
-      icon: "🚀",
     },
     {
       year: "2024",
       title: "EXPERTISE RECONNUE",
       description:
         "Monteur vidéo professionnel avec une clientèle internationale",
-      icon: "🏆",
     },
   ];
 
@@ -161,11 +153,6 @@ const About = () => {
                 className={`text-center hover:shadow-xl transition-all duration-500 animate-scale-in stagger-${index + 3} hover-grow hover-glow border-2 hover:border-primary/50`}
               >
                 <CardContent className="p-6">
-                  <div
-                    className={`text-5xl mb-4 animate-bounce-slow ${achievement.color}`}
-                  >
-                    {achievement.icon}
-                  </div>
                   <h3 className="font-display font-bold text-lg mb-2 text-primary">
                     {achievement.title}
                   </h3>
@@ -193,9 +180,6 @@ const About = () => {
                 >
                   <CardHeader className="pb-2">
                     <div className="flex items-center justify-between mb-2">
-                      <div className="text-3xl group-hover:scale-125 transition-transform duration-300 animate-wiggle">
-                        {skill.icon}
-                      </div>
                       <Badge
                         variant="secondary"
                         className="font-bold text-primary"
@@ -252,9 +236,6 @@ const About = () => {
                     >
                       <CardContent className="p-6">
                         <div className="flex items-center space-x-4 mb-4">
-                          <div className="text-3xl animate-bounce-slow">
-                            {step.icon}
-                          </div>
                           <div>
                             <Badge
                               variant="outline"
