@@ -108,6 +108,15 @@ const Index = () => {
                   <OrderForm onClose={() => setIsOrderFormOpen(false)} />
                 </DialogContent>
               </Dialog>
+
+              <Button
+                asChild
+                size="sm"
+                variant="ghost"
+                className="font-display font-semibold text-sm tracking-wide px-4 py-2 rounded-full text-muted-foreground hover:text-foreground opacity-50 hover:opacity-100 transition-all duration-300"
+              >
+                <Link to="/admin">🔧 ADMIN</Link>
+              </Button>
             </div>
 
             {/* Statistiques animées */}
