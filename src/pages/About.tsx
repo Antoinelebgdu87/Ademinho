@@ -3,27 +3,35 @@ import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  loadContent,
-  subscribeToContentChanges,
+  loadContentFromServer,
+  subscribeToServerContentChanges,
   type SiteContent,
-} from "@/lib/storage";
+} from "@/lib/realStorage";
 
 const About = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [siteContent, setSiteContent] = useState<SiteContent>(loadContent());
+  const [siteContent, setSiteContent] = useState<SiteContent | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 200);
+    const loadContent = async () => {
+      try {
+        const content = await loadContentFromServer();
+        setSiteContent(content);
+      } catch (error) {
+        console.error("Error loading content:", error);
+      } finally {
+        setTimeout(() => setIsLoaded(true), 200);
+      }
+    };
+
+    loadContent();
 
     // Écoute les changements de contenu en temps réel
-    const unsubscribe = subscribeToContentChanges((newContent) => {
+    const unsubscribe = subscribeToServerContentChanges((newContent) => {
       setSiteContent(newContent);
     });
 
-    return () => {
-      clearTimeout(timer);
-      unsubscribe();
-    };
+    return unsubscribe;
   }, []);
 
   const skills = [
@@ -113,6 +121,17 @@ const About = () => {
         "Monteur vidéo professionnel avec une clientèle internationale",
     },
   ];
+
+  if (!siteContent) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Chargement du contenu...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">

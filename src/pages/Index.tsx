@@ -12,15 +12,15 @@ import OrderForm from "@/components/OrderForm";
 import { EmailIcon, DiscordIcon, TwitterIcon } from "@/components/SocialIcons";
 import { Link } from "react-router-dom";
 import {
-  loadContent,
-  subscribeToContentChanges,
+  loadContentFromServer,
+  subscribeToServerContentChanges,
   type SiteContent,
-} from "@/lib/storage";
+} from "@/lib/realStorage";
 
 const Index = () => {
   const [isOrderFormOpen, setIsOrderFormOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [siteContent, setSiteContent] = useState<SiteContent>(loadContent());
+  const [siteContent, setSiteContent] = useState<SiteContent | null>(null);
 
   useEffect(() => {
     // Animation de chargement progressive
@@ -37,8 +37,19 @@ const Index = () => {
     };
   }, []);
 
+  if (!siteContent) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Chargement du portfolio...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
+    <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Hero Section avec animations avancées */}
