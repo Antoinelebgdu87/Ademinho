@@ -360,6 +360,7 @@ const Admin = () => {
           </TabsList>
 
           <TabsContent value="content" className="space-y-6">
+            <SystemInfo />
             <Card className="animate-scale-in hover-glow">
               <CardHeader>
                 <CardTitle className="font-display font-bold text-2xl flex items-center gap-2">
