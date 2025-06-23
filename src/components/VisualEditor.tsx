@@ -108,9 +108,12 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
       // Update content based on element type
       updateContentInStorage(highlighted as HTMLElement, editingText);
 
+      // Auto-save immediately
+      saveContent(siteContent);
+
       toast({
-        title: "✅ Élément modifié !",
-        description: "Le changement est visible en temps réel",
+        title: "Élément modifié et sauvegardé !",
+        description: "Changement visible par tous instantanément",
       });
     }
   };
@@ -217,23 +220,49 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
       <style>{`
         .visual-editing-mode * {
           outline: 1px dashed transparent !important;
-          transition: outline 0.2s ease !important;
+          transition: all 0.2s ease !important;
         }
 
         .visual-editing-mode *:hover {
           outline: 2px dashed #ED5C3B !important;
-          outline-offset: 2px !important;
+          outline-offset: 3px !important;
           cursor: pointer !important;
+          background: rgba(237, 92, 59, 0.05) !important;
         }
 
         .visual-editor-highlight {
           outline: 3px solid #ED5C3B !important;
           outline-offset: 4px !important;
-          background: rgba(237, 92, 59, 0.1) !important;
+          background: rgba(237, 92, 59, 0.15) !important;
+          box-shadow: 0 0 20px rgba(237, 92, 59, 0.3) !important;
         }
 
         .visual-editor-panel {
           pointer-events: auto !important;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* Indicateur visuel pour mode édition actif */
+        .visual-editing-mode::before {
+          content: 'MODE ÉDITION ACTIF - Cliquez sur les éléments pour les modifier';
+          position: fixed;
+          top: 100px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #ED5C3B;
+          color: white;
+          padding: 8px 16px;
+          border-radius: 20px;
+          font-family: 'Outfit', sans-serif;
+          font-weight: 600;
+          font-size: 14px;
+          z-index: 9998;
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.7; }
         }
       `}</style>
 

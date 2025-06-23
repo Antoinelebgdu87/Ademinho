@@ -11,6 +11,7 @@ import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import VisualEditor from "./components/VisualEditor";
 import FloatingAdminButton from "./components/FloatingAdminButton";
+import QuickLogin from "./components/QuickLogin";
 import { useState, useEffect } from "react";
 import { isAdminLoggedIn } from "./lib/auth";
 
@@ -18,15 +19,20 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [isVisualEditorActive, setIsVisualEditorActive] = useState(false);
+  const [isQuickLoginOpen, setIsQuickLoginOpen] = useState(false);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] =
+    useState(isAdminLoggedIn());
 
   useEffect(() => {
-    // Global keyboard shortcut for visual editor
+    // Global keyboard shortcuts
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ctrl+E to toggle visual editor (only for admin)
+      // Ctrl+E to open quick login or toggle visual editor
       if (e.ctrlKey && e.key === "e") {
         e.preventDefault();
-        if (isAdminLoggedIn()) {
+        if (isAdminAuthenticated) {
           setIsVisualEditorActive(!isVisualEditorActive);
+        } else {
+          setIsQuickLoginOpen(true);
         }
       }
 
@@ -39,7 +45,12 @@ const App = () => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isVisualEditorActive]);
+  }, [isVisualEditorActive, isAdminAuthenticated]);
+
+  const handleLoginSuccess = () => {
+    setIsAdminAuthenticated(true);
+    setIsVisualEditorActive(true);
+  };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -56,8 +67,15 @@ const App = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
 
-          {/* Global Visual Editor - available on all pages for admins */}
-          {isAdminLoggedIn() && (
+          {/* Quick Login for Ctrl+E access */}
+          <QuickLogin
+            isOpen={isQuickLoginOpen}
+            onClose={() => setIsQuickLoginOpen(false)}
+            onSuccess={handleLoginSuccess}
+          />
+
+          {/* Global Visual Editor - available on all pages for authenticated admins */}
+          {isAdminAuthenticated && (
             <>
               <VisualEditor
                 isActive={isVisualEditorActive}
