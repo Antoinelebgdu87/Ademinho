@@ -29,7 +29,6 @@ import {
   type SiteContent,
 } from "@/lib/realStorage";
 
-
 const Admin = () => {
   const { toast } = useToast();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -305,8 +304,8 @@ const Admin = () => {
                   syncStatus.storageType === "localStorage"
                     ? "text-blue-600 border-blue-600"
                     : syncStatus.storageType === "server"
-                    ? "text-green-600 border-green-600"
-                    : "text-orange-600 border-orange-600"
+                      ? "text-green-600 border-green-600"
+                      : "text-orange-600 border-orange-600"
                 }`}
               >
                 {syncStatus.storageType === "localStorage" && "💾 LOCAL"}
@@ -592,9 +591,7 @@ const Admin = () => {
                   disabled={isSaving}
                   className="w-full mt-6 font-display font-bold tracking-wide animate-pulse-glow"
                 >
-                  {isSaving
-                    ? "🔄 SAUVEGARDE..."
-                    : "💾 SAUVEGARDER LES PROJETS"}
+                  {isSaving ? "🔄 SAUVEGARDE..." : "💾 SAUVEGARDER LES PROJETS"}
                 </Button>
               </CardContent>
             </Card>
@@ -817,13 +814,12 @@ const Admin = () => {
                     <div className="text-center">
                       <div className="text-3xl mb-2 animate-pulse-glow">⚡</div>
                       <p className="font-semibold">INSTANTANÉ</p>
-              <div className="text-sm text-muted-foreground space-y-2">
-                <p><strong>Système de sauvegarde local !</strong></p>
-                <p>• Vos modifications sont sauvegardées localement</p>
-                <p>• Visibles par tous les visiteurs en temps réel</p>
-                <p>• Persistance garantie même après redémarrage</p>
-                <p>• {syncStatus.storageType === "localStorage" ? "💾 Mode local actif" : "📄 Mode par défaut"}</p>
-              </div>
+                      <p className="text-sm text-muted-foreground">
+                        Changements visibles immédiatement
+                      </p>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl mb-2 animate-bounce-slow">
                         🌍
                       </div>
                       <p className="font-semibold">GLOBAL</p>
@@ -866,8 +862,6 @@ const Admin = () => {
           </TabsContent>
         </Tabs>
       </div>
-
-
     </div>
   );
 };
