@@ -104,7 +104,7 @@ const Contact = () => {
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up stagger-2">
               Prêt à transformer vos idées en vidéos exceptionnelles qui
-              explosentent les compteurs ? Écrivez-moi ! 🚀
+              explosent les compteurs ? Écrivez-moi !
             </p>
           </div>
 
@@ -136,7 +136,7 @@ const Contact = () => {
                     className="w-full font-display font-semibold tracking-wide hover-grow hover-glow group-hover:border-primary group-hover:text-primary"
                   >
                     <a href={method.link} target="_blank" rel="noopener">
-                      🚀 CONTACTER MAINTENANT
+                      CONTACTER MAINTENANT
                     </a>
                   </Button>
                 </CardContent>

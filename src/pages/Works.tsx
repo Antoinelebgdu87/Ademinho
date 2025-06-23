@@ -56,25 +56,21 @@ const Works = () => {
     {
       number: "50M+",
       label: "VUES TOTALES",
-      icon: "👁️",
       color: "text-blue-500",
     },
     {
       number: "200+",
       label: "PROJETS RÉALISÉS",
-      icon: "🎬",
       color: "text-green-500",
     },
     {
       number: "15+",
       label: "CONTENUS VIRAUX",
-      icon: "🚀",
       color: "text-purple-500",
     },
     {
       number: "98%",
       label: "CLIENTS SATISFAITS",
-      icon: "⭐",
       color: "text-yellow-500",
     },
   ];
@@ -108,7 +104,7 @@ const Works = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up stagger-2 leading-relaxed">
               Découvrez une sélection de mes meilleurs projets de montage vidéo
               et motion design qui ont explosé les compteurs ! Chaque création
-              raconte une histoire unique. 🚀
+              raconte une histoire unique.
             </p>
           </div>
 
@@ -120,11 +116,6 @@ const Works = () => {
                 className={`text-center hover:shadow-xl transition-all duration-500 animate-scale-in stagger-${index + 3} hover-grow hover-glow border-2 hover:border-primary/50`}
               >
                 <CardContent className="p-6">
-                  <div
-                    className={`text-4xl mb-3 animate-bounce-slow ${stat.color}`}
-                  >
-                    {stat.icon}
-                  </div>
                   <div className="text-2xl lg:text-3xl font-black text-primary mb-1">
                     {stat.number}
                   </div>
@@ -149,7 +140,7 @@ const Works = () => {
                     : "hover-glow"
                 }`}
               >
-                {category === "Tous" ? "🌟 TOUS" : `${category}`}
+                {category === "Tous" ? "TOUS" : `${category}`}
               </Button>
             ))}
           </div>
@@ -170,7 +161,7 @@ const Works = () => {
                   {/* Effet de play au hover */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="text-white text-4xl animate-pulse-glow">
-                      ▶️
+                      PLAY
                     </div>
                   </div>
                 </div>
@@ -183,9 +174,6 @@ const Works = () => {
                     >
                       {project.category}
                     </Badge>
-                    <div className="text-primary group-hover:scale-125 transition-transform animate-float">
-                      ✨
-                    </div>
                   </div>
 
                   <h3 className="font-display font-bold text-xl tracking-wide mb-3 group-hover:text-primary transition-colors">
@@ -202,15 +190,7 @@ const Works = () => {
                       size="sm"
                       className="flex-1 font-display font-semibold tracking-wide hover-glow group-hover:border-primary group-hover:text-primary"
                     >
-                      👀 VOIR LE PROJET
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="px-3 hover:bg-primary hover:text-primary-foreground group-hover:scale-110 transition-all"
-                      title="J'aime"
-                    >
-                      ❤️
+                      VOIR LE PROJET
                     </Button>
                   </div>
                 </CardContent>
