@@ -49,7 +49,7 @@ const Navigation = () => {
             to="/"
             className="font-display font-bold text-xl tracking-tight"
           >
-            ADEMINHO 🎬
+            ADEMINHO
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">

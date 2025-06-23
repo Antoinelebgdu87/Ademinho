@@ -33,7 +33,7 @@ const ScrollingBanner = () => {
             key={index}
             className="inline-block px-12 font-display font-black text-lg lg:text-xl tracking-wider hover:scale-110 transition-transform cursor-pointer"
           >
-            {service} ✨
+            {service}
           </span>
         ))}
       </div>

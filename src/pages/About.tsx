@@ -30,42 +30,36 @@ const About = () => {
     {
       name: "AFTER EFFECTS",
       level: 98,
-      icon: "🎨",
       description: "Maître des effets visuels et motion design",
       color: "bg-purple-500",
     },
     {
       name: "PREMIÈRE PRO",
       level: 95,
-      icon: "🎬",
       description: "Expert en montage vidéo professionnel",
       color: "bg-blue-500",
     },
     {
       name: "MOTION DESIGN",
       level: 92,
-      icon: "✨",
       description: "Créateur d'animations époustouflantes",
       color: "bg-pink-500",
     },
     {
       name: "COLOR GRADING",
       level: 88,
-      icon: "🌈",
       description: "Artiste de la colorimétrie cinématographique",
       color: "bg-orange-500",
     },
     {
       name: "STORYTELLING",
       level: 94,
-      icon: "📖",
       description: "Narrateur d'histoires captivantes",
       color: "bg-green-500",
     },
     {
       name: "CRÉATIVITÉ",
       level: 99,
-      icon: "🚀",
       description: "Innovation et idées révolutionnaires",
       color: "bg-primary",
     },
@@ -152,7 +146,7 @@ const About = () => {
             <h1 className="font-display font-black text-4xl sm:text-6xl tracking-tight mb-6 animate-fade-in-up">
               À PROPOS
               <br />
-              <span className="text-primary">D'ADEMINHO</span> 🇧🇷
+              <span className="text-primary">D'ADEMINHO</span> BRÉSIL
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up stagger-2 leading-relaxed">
               {siteContent.aboutText}

@@ -102,7 +102,7 @@ const OrderForm = ({ onClose }: OrderFormProps) => {
     <Card className="w-full max-w-2xl mx-auto">
       <CardHeader>
         <CardTitle className="font-display text-2xl font-bold tracking-tight">
-          COMMANDER UNE VIDÉO 🎬
+          COMMANDER UNE VIDÉO
         </CardTitle>
       </CardHeader>
       <CardContent>

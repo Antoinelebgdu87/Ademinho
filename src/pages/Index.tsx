@@ -67,7 +67,7 @@ const Index = () => {
                 ADEMINHO
               </span>
               <span className="block text-2xl sm:text-3xl lg:text-4xl text-muted-foreground">
-                🇧🇷
+                BRÉSIL
               </span>
             </h1>
 
@@ -115,7 +115,7 @@ const Index = () => {
                 variant="ghost"
                 className="font-display font-semibold text-sm tracking-wide px-4 py-2 rounded-full text-muted-foreground hover:text-foreground opacity-50 hover:opacity-100 transition-all duration-300"
               >
-                <Link to="/admin">🔧 ADMIN</Link>
+                <Link to="/admin">ADMIN</Link>
               </Button>
             </div>
 
@@ -148,29 +148,6 @@ const Index = () => {
             </div>
           </div>
         </div>
-
-        {/* Éléments décoratifs animés */}
-        <div className="absolute top-1/4 left-10 text-6xl opacity-30 animate-float cursor-pointer transition-transform duration-300 hover:scale-110">
-          🎬
-        </div>
-        <div
-          className="absolute top-1/3 right-16 text-4xl opacity-30 animate-wiggle cursor-pointer transition-transform duration-300 hover:scale-110"
-          style={{ animationDelay: "0.5s" }}
-        >
-          🎥
-        </div>
-        <div
-          className="absolute bottom-1/4 left-1/4 text-5xl opacity-30 animate-rotate-slow cursor-pointer transition-transform duration-300 hover:scale-110"
-          style={{ animationDelay: "1s" }}
-        >
-          ✨
-        </div>
-        <div
-          className="absolute top-1/2 right-1/3 text-3xl opacity-30 animate-float cursor-pointer transition-transform duration-300 hover:scale-110"
-          style={{ animationDelay: "1.5s" }}
-        >
-          🚀
-        </div>
       </section>
 
       {/* Services Scrolling Banner */}
@@ -191,7 +168,6 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             <div className="space-y-4 animate-slide-in-left stagger-1 hover-grow p-6 rounded-lg bg-gradient-to-br from-background to-muted hover:shadow-xl transition-all duration-300">
-              <div className="text-4xl mb-4 animate-bounce-slow">🎯</div>
               <h3 className="font-display font-bold text-xl tracking-wide text-primary">
                 PRÉCISION MILLIMÉTRIQUE
               </h3>
@@ -202,24 +178,22 @@ const Index = () => {
             </div>
 
             <div className="space-y-4 animate-fade-in-up stagger-2 hover-grow p-6 rounded-lg bg-gradient-to-br from-background to-muted hover:shadow-xl transition-all duration-300">
-              <div className="text-4xl mb-4 animate-wiggle">⚡</div>
               <h3 className="font-display font-bold text-xl tracking-wide text-primary">
                 VITESSE SUPERSONIQUE
               </h3>
               <p className="text-muted-foreground">
                 Livraison ultra-rapide sans compromis sur la qualité. Votre
-                contenu viral prêt en un temps record ! 🚀
+                contenu viral prêt en un temps record.
               </p>
             </div>
 
             <div className="space-y-4 animate-slide-in-right stagger-3 hover-grow p-6 rounded-lg bg-gradient-to-br from-background to-muted hover:shadow-xl transition-all duration-300">
-              <div className="text-4xl mb-4 animate-rotate-slow">🌟</div>
               <h3 className="font-display font-bold text-xl tracking-wide text-primary">
                 CRÉATIVITÉ EXPLOSIVE
               </h3>
               <p className="text-muted-foreground">
                 Des idées révolutionnaires et des transitions époustouflantes
-                qui font exploser votre audience !
+                qui font exploser votre audience.
               </p>
             </div>
           </div>
@@ -292,7 +266,7 @@ const Index = () => {
       <footer className="py-12 px-6 bg-foreground text-background">
         <div className="container mx-auto max-w-4xl text-center">
           <h3 className="font-display font-bold text-2xl tracking-wide mb-6 animate-fade-in-up">
-            ADEMINHO 🎬
+            ADEMINHO
           </h3>
           <p className="text-background/80 mb-8 animate-fade-in-up stagger-2">
             Monteur Vidéo & Créateur de Contenu Brésilien Légendaire
@@ -332,8 +306,8 @@ const Index = () => {
           </div>
 
           <div className="mt-8 pt-8 border-t border-background/20 text-background/60 text-sm animate-fade-in-up stagger-6">
-            © 2024 Ademinho Portfolio. Tous droits réservés. Made with 🔥 in
-            Brazil
+            © 2024 Ademinho Portfolio. Tous droits réservés. Made with passion
+            in Brazil
           </div>
         </div>
       </footer>
