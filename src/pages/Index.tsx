@@ -123,7 +123,7 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 animate-fade-in-up stagger-6">
               <div className="text-center hover-grow transition-transform duration-300">
                 <div className="text-4xl lg:text-6xl font-black text-primary mb-2">
-                  50M+
+                  0
                 </div>
                 <p className="font-display font-semibold text-muted-foreground">
                   VUES GÉNÉRÉES
@@ -131,7 +131,7 @@ const Index = () => {
               </div>
               <div className="text-center hover-grow transition-transform duration-300">
                 <div className="text-4xl lg:text-6xl font-black text-primary mb-2">
-                  200+
+                  0
                 </div>
                 <p className="font-display font-semibold text-muted-foreground">
                   PROJETS RÉALISÉS
