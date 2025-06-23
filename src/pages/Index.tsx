@@ -63,18 +63,21 @@ const Index = () => {
               <span className="block animate-slide-in-left stagger-1">
                 SALUT, MOI C'EST
               </span>
-              <span className="block text-primary animate-text-shimmer animate-slide-in-right stagger-2">
-                {siteContent.heroTitle.split(" ").slice(-1)[0]}
+              <span className="block text-primary animate-slide-in-right stagger-2">
+                ADEMINHO
+              </span>
+              <span className="block text-2xl sm:text-3xl lg:text-4xl text-muted-foreground">
+                🇧🇷
               </span>
             </h1>
 
             {/* Sous-titres avec animations échelonnées */}
             <div className="space-y-4 mb-12">
-              <p className="font-display font-bold text-xl sm:text-2xl lg:text-3xl tracking-wide text-foreground/90 animate-fade-in-up stagger-3 hover-float">
-                {siteContent.heroSubtitle}
+              <p className="font-display font-bold text-xl sm:text-2xl lg:text-3xl tracking-wide text-foreground/90 animate-fade-in-up stagger-3">
+                MONTEUR VIDÉO & CRÉATEUR DE CONTENU
               </p>
-              <p className="font-display font-semibold text-lg sm:text-xl lg:text-2xl tracking-wide text-muted-foreground animate-fade-in-up stagger-4 hover-float">
-                {siteContent.heroDescription}
+              <p className="font-display font-semibold text-lg sm:text-xl lg:text-2xl tracking-wide text-muted-foreground animate-fade-in-up stagger-4">
+                SPÉCIALISÉ EN AFTER EFFECTS & PREMIÈRE PRO
               </p>
             </div>
 
@@ -83,9 +86,9 @@ const Index = () => {
               <Button
                 asChild
                 size="lg"
-                className="font-display font-bold text-base tracking-wide px-8 py-6 rounded-full hover-glow hover-grow animate-pulse-glow transform transition-all duration-300"
+                className="font-display font-bold text-base tracking-wide px-8 py-6 rounded-full hover-glow hover-grow transform transition-all duration-300"
               >
-                <Link to="/works">🎬 VOIR MES CRÉATIONS ÉPIQUES</Link>
+                <Link to="/works">VOIR MES CRÉATIONS</Link>
               </Button>
 
               <Dialog open={isOrderFormOpen} onOpenChange={setIsOrderFormOpen}>
@@ -95,7 +98,7 @@ const Index = () => {
                     size="lg"
                     className="font-display font-bold text-base tracking-wide px-8 py-6 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover-grow transform transition-all duration-500 hover:shadow-2xl"
                   >
-                    🚀 COMMANDER UNE VIDÉO MAGIQUE
+                    COMMANDER UNE VIDÉO
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto animate-scale-in">
@@ -170,10 +173,7 @@ const Index = () => {
           <h2 className="font-display font-black text-3xl sm:text-5xl tracking-tight mb-8 animate-fade-in-up">
             CRÉATEUR DE CONTENUS
             <br />
-            <span className="text-primary animate-text-shimmer">
-              LÉGENDAIRES
-            </span>{" "}
-            🔥
+            <span className="text-primary">PROFESSIONNELS</span>
           </h2>
 
           <p className="text-xl text-muted-foreground mb-16 animate-fade-in-up stagger-2 max-w-3xl mx-auto leading-relaxed">
@@ -221,29 +221,26 @@ const Index = () => {
       <section className="py-20 px-6 bg-muted/30">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="font-display font-black text-3xl sm:text-5xl tracking-tight mb-12 animate-fade-in-up">
-            MES SUPER-POUVOIRS
+            EXPERTISES
             <br />
-            <span className="text-primary">TECHNOLOGIQUES</span> 💻
+            <span className="text-primary">TECHNIQUES</span>
           </h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { name: "AFTER EFFECTS", icon: "🎨", level: "MAÎTRE JEDI" },
-              { name: "PREMIÈRE PRO", icon: "🎬", level: "EXPERT NINJA" },
-              { name: "MOTION DESIGN", icon: "✨", level: "MAGICIEN" },
-              { name: "COLOR GRADING", icon: "🌈", level: "ARTISTE" },
+              { name: "AFTER EFFECTS", level: "EXPERT" },
+              { name: "PREMIÈRE PRO", level: "AVANCÉ" },
+              { name: "MOTION DESIGN", level: "SPÉCIALISTE" },
+              { name: "COLOR GRADING", level: "PROFESSIONNEL" },
             ].map((tech, index) => (
               <div
                 key={tech.name}
-                className={`p-6 bg-background rounded-lg hover-grow hover-glow animate-scale-in stagger-${index + 1} cursor-pointer transform transition-all duration-300`}
+                className={`p-6 bg-background rounded-lg hover-grow hover-glow animate-scale-in stagger-${index + 1} cursor-pointer transform transition-all duration-300 border border-muted`}
               >
-                <div className="text-4xl mb-3 animate-bounce-slow">
-                  {tech.icon}
-                </div>
-                <h3 className="font-display font-bold text-sm tracking-wide mb-2">
+                <h3 className="font-display font-bold text-sm tracking-wide mb-2 text-primary">
                   {tech.name}
                 </h3>
-                <p className="text-xs text-primary font-semibold">
+                <p className="text-xs text-muted-foreground font-semibold">
                   {tech.level}
                 </p>
               </div>
@@ -258,23 +255,20 @@ const Index = () => {
           <h2 className="font-display font-black text-3xl sm:text-5xl tracking-tight mb-6 animate-fade-in-up">
             PRÊT À CRÉER QUELQUE CHOSE
             <br />
-            <span className="text-primary animate-gradient bg-clip-text text-transparent">
-              D'ABSOLUMENT ÉPIQUE ?
-            </span>{" "}
-            🔥
+            <span className="text-primary">D'EXCEPTIONNEL ?</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-8 animate-fade-in-up stagger-2">
-            Transformons vos idées les plus folles en vidéos virales
-            inoubliables !
+            Transformons vos idées en vidéos professionnelles qui marquent les
+            esprits
           </p>
 
           <Dialog open={isOrderFormOpen} onOpenChange={setIsOrderFormOpen}>
             <DialogTrigger asChild>
               <Button
                 size="lg"
-                className="font-display font-bold text-lg tracking-wide px-12 py-6 rounded-full animate-pulse-glow hover-grow hover:shadow-2xl transform transition-all duration-500 bg-gradient-to-r from-primary to-purple-500"
+                className="font-display font-bold text-lg tracking-wide px-12 py-6 rounded-full hover-grow hover:shadow-2xl transform transition-all duration-500"
               >
-                🚀 LANCER MON PROJET LÉGENDAIRE
+                COMMENCER MON PROJET
               </Button>
             </DialogTrigger>
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto animate-scale-in">
