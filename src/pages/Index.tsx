@@ -23,18 +23,25 @@ const Index = () => {
   const [siteContent, setSiteContent] = useState<SiteContent | null>(null);
 
   useEffect(() => {
-    // Animation de chargement progressive
-    const timer = setTimeout(() => setIsLoaded(true), 200);
+    const loadContent = async () => {
+      try {
+        const content = await loadContentFromServer();
+        setSiteContent(content);
+      } catch (error) {
+        console.error("Error loading content:", error);
+      } finally {
+        setIsLoaded(true);
+      }
+    };
 
-    // Écoute les changements de contenu en temps réel
-    const unsubscribe = subscribeToContentChanges((newContent) => {
+    loadContent();
+
+    // Subscribe to real-time changes
+    const unsubscribe = subscribeToServerContentChanges((newContent) => {
       setSiteContent(newContent);
     });
 
-    return () => {
-      clearTimeout(timer);
-      unsubscribe();
-    };
+    return unsubscribe;
   }, []);
 
   if (!siteContent) {
