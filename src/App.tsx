@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import VisualEditor from "./components/VisualEditor";
 import FloatingAdminButton from "./components/FloatingAdminButton";
 import QuickLogin from "./components/QuickLogin";
+import KeyboardHint from "./components/KeyboardHint";
 import { useState, useEffect } from "react";
 import { isAdminLoggedIn } from "./lib/auth";
 
@@ -66,6 +67,9 @@ const App = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+
+          {/* Keyboard hint for Ctrl+E */}
+          <KeyboardHint />
 
           {/* Quick Login for Ctrl+E access */}
           <QuickLogin
