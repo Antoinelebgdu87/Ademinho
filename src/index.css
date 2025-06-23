@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -122,14 +122,17 @@
 
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite alternate;
+    will-change: box-shadow;
   }
 
   .animate-wiggle {
     animation: wiggle 1s ease-in-out infinite;
+    will-change: transform;
   }
 
   .animate-rotate-slow {
     animation: rotate-slow 8s linear infinite;
+    will-change: transform;
   }
 
   .animate-slide-up {
@@ -154,17 +157,21 @@
 
   .animate-gradient {
     animation: gradient-shift 4s ease infinite;
-    background: linear-gradient(-45deg, #ed5c3b, #ff6b8a, #4facfe, #00f2fe);
+    background: linear-gradient(-45deg, #ED5C3B, #FF6B8A, #4FACFE, #00F2FE);
     background-size: 400% 400%;
+    will-change: background-position;
   }
 
-  .animate-text-shimmer {
-    animation: text-shimmer 2.5s ease-in-out infinite;
-    background: linear-gradient(90deg, #000 25%, #ed5c3b 50%, #000 75%);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .animate-blob {
+    animation: blob 7s infinite;
+    will-change: transform;
+  }
+
+  .animate-tilt {
+    animation: tilt 10s infinite linear;
+    will-change: transform;
+  }
+    will-change: background-position;
   }
 
   .animate-blob {
@@ -185,8 +192,7 @@
   }
 
   @keyframes float {
-    0%,
-    100% {
+    0%, 100% {
       transform: translateY(0px);
     }
     50% {
@@ -195,31 +201,25 @@
   }
 
   @keyframes bounce-slow {
-    0%,
-    100% {
-      transform: translateY(-25%);
-      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    0%, 100% {
+      transform: translateY(0);
     }
     50% {
-      transform: none;
-      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      transform: translateY(-10px);
     }
   }
 
   @keyframes pulse-glow {
     from {
-      box-shadow: 0 0 20px #ed5c3b40;
+      box-shadow: 0 0 20px #ED5C3B40;
     }
     to {
-      box-shadow:
-        0 0 40px #ed5c3b80,
-        0 0 60px #ed5c3b40;
+      box-shadow: 0 0 40px #ED5C3B80, 0 0 60px #ED5C3B40;
     }
   }
 
   @keyframes wiggle {
-    0%,
-    100% {
+    0%, 100% {
       transform: rotate(-3deg);
     }
     50% {
@@ -328,9 +328,7 @@
   }
 
   @keyframes tilt {
-    0%,
-    50%,
-    100% {
+    0%, 50%, 100% {
       transform: rotate(0deg);
     }
     25% {
@@ -341,42 +339,54 @@
     }
   }
 
-  /* Hover animations */
+  /* Hover animations - Fixed to prevent conflicts */
   .hover-float:hover {
-    animation: float 0.6s ease-in-out;
+    animation: none;
+    transform: translateY(-8px);
+    transition: transform 0.3s ease;
+  }
+
+  .hover-grow {
+    transition: transform 0.3s ease;
   }
 
   .hover-grow:hover {
     transform: scale(1.05);
-    transition: transform 0.3s ease;
+  }
+
+  .hover-glow {
+    transition: box-shadow 0.3s ease;
   }
 
   .hover-glow:hover {
     box-shadow: 0 0 30px rgba(237, 92, 59, 0.6);
-    transition: box-shadow 0.3s ease;
   }
 
   .hover-bounce:hover {
-    animation: bounce-slow 0.8s;
+    animation: none;
+    transform: translateY(-4px);
+    transition: transform 0.2s ease;
   }
 
   /* Stagger animations */
-  .stagger-1 {
-    animation-delay: 0.1s;
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+
+  /* Animation reset on interactions */
+  .hover-grow:hover .animate-bounce-slow,
+  .hover-grow:hover .animate-wiggle,
+  .hover-grow:hover .animate-pulse-glow {
+    animation-play-state: paused;
   }
-  .stagger-2 {
-    animation-delay: 0.2s;
-  }
-  .stagger-3 {
-    animation-delay: 0.3s;
-  }
-  .stagger-4 {
-    animation-delay: 0.4s;
-  }
-  .stagger-5 {
-    animation-delay: 0.5s;
-  }
-  .stagger-6 {
-    animation-delay: 0.6s;
+
+  /* Prevent text selection issues with animations */
+  .animate-text-shimmer {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
   }
 }
