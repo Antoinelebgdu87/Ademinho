@@ -255,8 +255,13 @@ const VisualEditor = ({ isActive, onToggle }: VisualEditorProps) => {
               </Button>
             </div>
 
-            <div className="text-sm text-muted-foreground">
-              Cliquez sur n'importe quel élément du site pour l'éditer !
+            <div className="text-sm text-muted-foreground space-y-2">
+              <p>
+                <strong>Mode édition activé !</strong>
+              </p>
+              <p>• Cliquez sur un texte pour l'éditer</p>
+              <p>• Survolez pour voir les éléments éditables</p>
+              <p>• Toutes modifications sont sauvegardées automatiquement</p>
             </div>
 
             {selectedElement && (

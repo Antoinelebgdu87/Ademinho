@@ -24,7 +24,7 @@ const FloatingAdminButton = ({
         className={`w-14 h-14 rounded-full shadow-2xl font-bold text-lg transition-all duration-300 ${
           isVisible ? "rotate-45" : ""
         } ${isEditorActive ? "animate-pulse bg-green-600 hover:bg-green-700" : ""}`}
-        title="Admin Tools (Ctrl+E pour éditeur)"
+        title="Outils Admin - Ctrl+E pour éditeur visuel"
       >
         {isEditorActive ? "ON" : "ADMIN"}
       </Button>
